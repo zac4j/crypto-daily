@@ -46,6 +46,16 @@ def get_coins_price(url: str, ids: str):
     response = requests.get(url, params = {"ids":ids, "vs_currencies":DEFAULT_CURRENCY})
     return response.json()
 
+html_coin_rows = ''
+
+def create_coin_row(name: str, price: str):
+    f'''
+    <tr>
+        <td>{name}</td>
+        <td>${price}</td>
+    </tr>
+    '''
+    return 
 
 '''
 In main we first get the current top coins price and then 
@@ -58,6 +68,21 @@ if __name__ == "__main__":
     for coin in coins:
         price = coins[coin]['usd']
         new_entry = TopCoins(coinId = coin["id"], price = price)
+        html_coin_rows += create_coin_row(coin, price)
         print(f"create new entry: {coin}, value: ${price}")
         db.session.add(new_entry)
     db.session.commit
+
+# Keep the Render hosted webapp still work
+@app.route("/")
+def main():
+    return f'''
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        {html_coin_rows}
+        </tr>
+    </table>
+     '''
