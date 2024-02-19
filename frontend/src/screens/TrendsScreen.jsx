@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CoinCards from "../components/CoinCards";
 import NFTCardDeck from "../components/NFTCardDeck";
+import CoinTable from "../components/CoinTable";
 
 const TrendsScreen = () => {
   const urls = {
@@ -14,12 +15,10 @@ const TrendsScreen = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const nftsResp = await axios.get("http://localhost:8080" + urls.nft_url);
+      const nftsResp = await axios.get(urls.nft_url);
       setTNFTs(nftsResp.data);
 
-      const tCoinsResp = await axios.get(
-        "http://localhost:8080" + urls.coin_url
-      );
+      const tCoinsResp = await axios.get(urls.coin_url);
       setTCoins(tCoinsResp.data);
     };
     fetchData();
@@ -28,7 +27,7 @@ const TrendsScreen = () => {
   return (
     <div className="container mt-5">
       {tNFTs && <NFTCardDeck data={tNFTs} />}
-      {tCoins && <CoinCards data={tCoins} />}
+      {tCoins && <CoinTable data={tCoins} />}
     </div>
   );
 };

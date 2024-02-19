@@ -28,19 +28,13 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const coinsResp = await axios.get(
-        "http://localhost:8080" + sections[1].url
-      );
+      const coinsResp = await axios.get(sections[1].url);
       setCoins(coinsResp.data);
 
-      const nftsResp = await axios.get(
-        "http://localhost:8080" + sections[0].nft_url
-      );
+      const nftsResp = await axios.get(sections[0].nft_url);
       setTNFTs(nftsResp.data);
 
-      const tCoinsResp = await axios.get(
-        "http://localhost:8080" + sections[0].coin_url
-      );
+      const tCoinsResp = await axios.get(sections[0].coin_url);
       setTCoins(tCoinsResp.data);
     };
     fetchData();

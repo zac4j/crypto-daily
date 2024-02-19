@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 
 const CryptoTable = ({ data }) => {
   if (!data) {
@@ -14,7 +15,7 @@ const CryptoTable = ({ data }) => {
         <Table responsive>
           <thead responsive>
             <tr>
-              <th>#</th>
+              <th>RANK</th>
               <th>SYMBOL</th>
               <th>NAME</th>
               <th>LAST</th>
@@ -26,20 +27,13 @@ const CryptoTable = ({ data }) => {
             {data.map((crypto, index) => (
               <tr key={crypto.id}>
                 <td>{index + 1}</td>
-                <td>{crypto.symbol.toUpperCase()}</td>
+                <td>
+                  <Image src={crypto.image} width="32px" height="32px" />{" "}
+                  {crypto.symbol.toUpperCase()}
+                </td>
                 <td>{crypto.name}</td>
-                <td>
-                  {crypto.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </td>
-                <td>
-                  {crypto.priceChange.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </td>
+                <td>{getPrice(crypto.price)}</td>
+                <td>{getPrice(crypto.priceChange)}</td>
                 <td>{crypto.priceChangePercentage.toFixed(2)}%</td>
               </tr>
             ))}
@@ -49,5 +43,16 @@ const CryptoTable = ({ data }) => {
     </div>
   );
 };
+
+function getPrice(price) {
+  if (price < 0.001) {
+    return "< $0.001";
+  } else {
+    return price.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  }
+}
 
 export default CryptoTable;

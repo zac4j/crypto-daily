@@ -7,7 +7,7 @@ const TopsScreen = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const coinsResp = await axios.get("http://localhost:8080/top/coins");
+      const coinsResp = await axios.get("/top/coins");
       setCoins(coinsResp.data);
     };
     fetchData();
