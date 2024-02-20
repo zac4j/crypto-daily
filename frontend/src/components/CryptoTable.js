@@ -28,7 +28,7 @@ const CryptoTable = ({ data }) => {
               <tr key={crypto.id}>
                 <td>{index + 1}</td>
                 <td>
-                  <Image src={crypto.image} width="32px" height="32px" />{" "}
+                  <Image src={crypto.image} width="24px" height="24px" />{" "}
                   {crypto.symbol.toUpperCase()}
                 </td>
                 <td>{crypto.name}</td>
