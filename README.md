@@ -18,12 +18,14 @@
 + Create web app
 
 ```bash
+npm install
 npm run build
 ```
 
-+ Copy all web content from frontend/build to backend/src/main/resources/web
++ Clear then copy new web contents to the server web folder
 
 ```bash
+rm -rf backend/src/main/resources/web/
 cp -r frontend/build/* backend/src/main/resources/web/
 ```
 
