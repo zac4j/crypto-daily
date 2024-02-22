@@ -10,6 +10,11 @@ Uncover emerging trends and innovations by exploring the latest news and analysi
 
 Enjoy the cryptocurrency revolution with Crypto Daily!
 
+## Showcase
+
+<img width="960" alt="crypto-daily-webpage" src="https://github.com/zac4j/crypto-daily/assets/17920307/8b54762f-e371-44c0-bdc3-4faf7ff98315">
+
+
 ## Overview
 
 ![crypto_daily_overview](https://github.com/zac4j/crypto-daily/assets/17920307/cccd15b0-8e9a-4cff-a7fb-f89cfebe71ed)
